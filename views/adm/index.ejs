@@ -1,0 +1,28 @@
+<%- include('cabecalho.ejs') %>
+
+<div class="row justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="col-12 col-md-8 text-center">
+        <div class="p-5 bg-light-container rounded-3 border-0">
+            <div class="mb-4">
+                <i class="bi bi-shield-check display-1 text-primary-custom"></i>
+            </div>
+            <h1 class="display-5 fw-bold mb-3 text-dark">Área Administrativa</h1>
+            <p class="lead text-muted mb-4">
+                Bem-vindo ao sistema. Gerencie seu catálogo e vendas com eficiência.
+            </p>
+            
+            <hr class="my-4">
+
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                <a href="/disco/lst" class="btn btn-primary btn-lg px-4 gap-3 rounded-pill shadow-sm">
+                    <i class="bi bi-disc"></i> Gerenciar Discos
+                </a>
+                <a href="/pedido/add" class="btn btn-outline-secondary btn-lg px-4 rounded-pill shadow-sm">
+                    <i class="bi bi-cart-plus"></i> Novo Pedido
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('rodape.ejs') %>

@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Reset e Base - Tema Claro */
+body {
+    background-color: #f4f6f8; /* Cinza muito claro, quase branco */
+    color: #333333; /* Cinza escuro para texto */
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { text-decoration: none !important; }
+
+/* Navbar Personalizada - Verde */
+.navbar-app {
+    background-color: #ffffff !important; /* Fundo branco para limpeza */
+    border-bottom: 3px solid #76c893; /* Borda inferior verde claro */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+    color: #2d6a4f !important; /* Verde escuro para o logo */
+    font-weight: 700;
+}
+
+.nav-link {
+    color: #555555 !important; /* Cinza médio para links */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active { 
+    color: #52b788 !important; /* Verde médio ao passar o mouse */
+}
+
+/* Cards e Containers de Fundo */
+.bg-light-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Sombra suave */
+    border: 1px solid #e9ecef;
+}
+
+/* Tabelas - Tema Claro */
+.table-custom {
+    --bs-table-bg: #ffffff;
+    --bs-table-striped-bg: #f8f9fa;
+    color: #333;
+    border-color: #dee2e6;
+}
+
+.table-custom thead {
+    background-color: #d8f3dc; /* Verde muito pálido para o cabeçalho */
+    color: #1b4332; /* Verde muito escuro para texto do cabeçalho */
+}
+
+.table-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Formulários */
+.form-control, .form-select {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    color: #495057;
+    border-radius: 8px;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #ffffff;
+    border-color: #76c893; /* Verde claro no foco */
+    color: #495057;
+    box-shadow: 0 0 0 0.25rem rgba(118, 200, 147, 0.25);
+}
+
+.form-label { 
+    color: #2d6a4f; /* Verde escuro para rótulos */
+    font-weight: 500;
+    margin-bottom: 0.5rem; 
+}
+
+/* Botões e Ícones */
+.text-primary-custom {
+    color: #52b788 !important; /* Verde destaque para ícones */
+}
+
+.btn-primary { 
+    background-color: #52b788; /* Verde médio */
+    border-color: #52b788; 
+    color: white;
+    font-weight: 500;
+}
+
+.btn-primary:hover { 
+    background-color: #40916c; /* Verde mais escuro no hover */
+    border-color: #40916c; 
+}
+
+.btn-success {
+    background-color: #76c893; /* Verde claro */
+    border-color: #76c893;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #52b788;
+    border-color: #52b788;
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Badges */
+.badge-green {
+    background-color: #d8f3dc;
+    color: #1b4332;
+    border: 1px solid #b7e4c7;
+}
+
+/* Rodapé */
+footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e9ecef;
+    color: #6c757d;
+    margin-top: auto;
+    padding: 1.5rem 0;
+}

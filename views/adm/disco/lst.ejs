@@ -1,0 +1,72 @@
+<%-include('../cabecalho.ejs')%>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-0">Catálogo de Discos</h2>
+        <p class="text-muted mb-0">Explore nossa coleção</p>
+    </div>
+    <div>
+        <a href="/disco/add" class="btn btn-primary-vintage">
+            <i class="bi bi-plus-lg"></i> Novo Disco
+        </a>
+    </div>
+</div>
+
+<!-- Filtro de Busca -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <form action="/disco/lst" method="post" class="input-group">
+            <input type="text" name="filtro" class="form-control border-end-0" placeholder="Buscar por título ou artista..." style="border-color: var(--border-color);">
+            <button class="btn btn-outline-secondary border-start-0" type="submit" style="background-color: #fff; border-color: var(--border-color);">
+                <i class="bi bi-search text-muted"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <% if(Discos.length === 0) { %>
+        <div class="col-12 text-center py-5">
+            <p class="text-muted fs-5">Nenhum disco encontrado no acervo.</p>
+        </div>
+    <% } %>
+
+    <% for (const {id, titulo, artista, genero, preco, img} of Discos) { %>
+    <div class="col">
+        <div class="card card-custom h-100">
+            <div class="card-img-container">
+                <% if(img) { %>
+                    <img src="<%= img %>" class="card-img-top" alt="<%= titulo %>">
+                <% } else { %>
+                    <div class="text-center text-muted">
+                        <i class="bi bi-disc fs-1 opacity-25"></i>
+                        <p class="small m-0">Sem capa</p>
+                    </div>
+                <% } %>
+            </div>
+            
+            <div class="card-body d-flex flex-column">
+                <span class="badge badge-vintage align-self-start mb-2 rounded-pill"><%= genero %></span>
+                
+                <h5 class="card-title mb-1 text-truncate" title="<%= titulo %>"><%= titulo %></h5>
+                <p class="card-text text-muted small mb-3"><%= artista %></p>
+                
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                    <span class="price-tag">R$ <%= parseFloat(preco).toFixed(2).replace('.', ',') %></span>
+                    
+                    <div class="btn-group">
+                        <a href="/adm/disco/edt/<%=id%>" class="btn btn-sm btn-outline-secondary border-0" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a href="/adm/disco/del/<%=id%>" class="btn btn-sm btn-outline-danger border-0" title="Excluir" onclick="return confirm('Tem certeza?');">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+<%-include('../rodape.ejs')%>

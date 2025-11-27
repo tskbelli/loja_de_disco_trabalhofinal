@@ -1,0 +1,46 @@
+<%- include('../cabecalho.ejs') %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-dark"><i class="bi bi-cart-check text-primary-custom"></i> Pedidos</h2>
+    <a href="/pedido/add" class="btn btn-success shadow-sm"><i class="bi bi-cart-plus"></i> Novo Pedido</a>
+</div>
+
+<div class="table-responsive bg-white rounded shadow-sm border">
+    <table class="table table-custom table-hover mb-0 align-middle">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Cliente</th>
+                <th>Pagamento</th>
+                <th>Total</th>
+                <th class="text-end">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const pedido of Pedidos) { %>
+            <tr>
+                <td class="text-muted">
+                    <% 
+                       let dataFmt = pedido.data_pedido 
+                           ? new Date(pedido.data_pedido).toLocaleDateString('pt-BR') 
+                           : '-'; 
+                    %>
+                    <small><i class="bi bi-calendar"></i> <%= dataFmt %></small>
+                </td>
+                <td class="fw-500 text-dark"><%= pedido.cliente %></td>
+                <td><span class="badge bg-light text-secondary border"><%= pedido.forma_pagamento %></span></td>
+                <td class="text-success fw-bold">R$ <%= Number(pedido.valor_total).toFixed(2) %></td>
+                <td class="text-end">
+                    <a href="/pedido/edt/<%= pedido.id %>" class="btn btn-sm btn-light text-warning border"><i class="bi bi-pencil-fill"></i></a>
+                    <a href="/pedido/del/<%= pedido.id %>" class="btn btn-sm btn-light text-danger border" onclick="return confirm('Excluir?')"><i class="bi bi-trash-fill"></i></a>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <% if(Pedidos.length === 0) { %>
+        <div class="text-center p-4 text-muted">Nenhum pedido registrado.</div>
+    <% } %>
+</div>
+
+<%- include('../rodape.ejs') %>

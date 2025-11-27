@@ -1,0 +1,55 @@
+<%- include('../cabecalho.ejs') %>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="bg-light-container">
+            <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+                <h3 class="text-dark"><i class="bi bi-pencil text-primary-custom"></i> Editar Pedido</h3>
+                <a href="/pedido/lst" class="btn btn-light btn-sm border">Voltar</a>
+            </div>
+            
+            <form method="post">
+                <input type="hidden" name="id" value="<%= Pedido.id %>">
+
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label class="form-label">Cliente</label>
+                        <input type="text" name="cliente" value="<%= Pedido.cliente %>" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Data</label>
+                         <% 
+                           let dataFmt = '';
+                           if(Pedido.data_pedido) {
+                               dataFmt = new Date(Pedido.data_pedido).toISOString().split('T')[0];
+                           }
+                        %>
+                        <input type="date" name="data_pedido" value="<%= dataFmt %>" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Forma de Pagamento</label>
+                        <select name="forma_pagamento" class="form-select" required>
+                            <option value="Pix" <%= Pedido.forma_pagamento === 'Pix' ? 'selected' : '' %>>Pix</option>
+                            <option value="Cartão de Crédito" <%= Pedido.forma_pagamento === 'Cartão de Crédito' ? 'selected' : '' %>>Cartão de Crédito</option>
+                            <option value="Cartão de Débito" <%= Pedido.forma_pagamento === 'Cartão de Débito' ? 'selected' : '' %>>Cartão de Débito</option>
+                            <option value="Dinheiro" <%= Pedido.forma_pagamento === 'Dinheiro' ? 'selected' : '' %>>Dinheiro</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Valor Total</label>
+                        <input type="number" step="0.01" name="valor_total" value="<%= Pedido.valor_total %>" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-save"></i> Atualizar Pedido</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../rodape.ejs') %>
