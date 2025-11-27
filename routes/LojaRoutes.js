@@ -8,7 +8,7 @@ const controller = new LojaController();
 router.get('/', controller.catalogo); // Home agora é o catálogo da loja
 router.get('/loja/catalogo', controller.catalogo);
 router.get('/loja/carrinho', controller.verCarrinho);
-router.get('/loja/meus-discos', controller.verMeusDiscos);
+router.get('/loja/colecao', controller.verMeusDiscos);
 
 // Ações
 router.get('/loja/adicionar/:id', controller.adicionarAoCarrinho);

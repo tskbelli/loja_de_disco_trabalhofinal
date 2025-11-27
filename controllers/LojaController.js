@@ -13,7 +13,7 @@ export default class LojaController {
             try {
                 const discos = await Disco.find({});
                 
-                res.render('loja/index', { 
+                res.render('loja/indexloja', { 
                     discos: discos,
                     carrinho: this.carrinho,
                     meusDiscos: this.meusDiscos
@@ -45,7 +45,7 @@ export default class LojaController {
             try {
                 const discosComprados = await Disco.find({ _id: { $in: this.meusDiscos } });
                 
-                res.render('loja/meus_discos', { discos: discosComprados });
+                res.render('loja/colecao', { discos: discosComprados });
             } catch (error) {
                 res.status(500).send("Erro ao carregar sua coleção.");
             }
@@ -76,7 +76,7 @@ export default class LojaController {
                 }
             });
             this.carrinho = []; // Limpa o carrinho
-            res.redirect('/loja/meus-discos');
+            res.redirect('/loja/colecao');
         }
     }
 }
