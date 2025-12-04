@@ -14,31 +14,29 @@ import pedidoRoutes from './routes/PedidoRoutes.js';
 // Rota da Loja (Novo)
 import lojaRoutes from './routes/LojaRoutes.js';
 
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
+// Caminho correto das views e public
 const __filename = fileURLToPath(import.meta.url);
+
 const __dirname = dirname(__filename);
-
-app.use(express.static(join(__dirname, '/public')));
-app.set('views', join(__dirname, '/views'));
-
-// === DEFINIÇÃO DE ROTAS ===
-
-// 1. Rota da Loja (Cliente) - Deve vir primeiro para capturar o "/"
 app.use('/', lojaRoutes); 
 
-// 2. Rotas do Admin
-app.use(clienteRoutes);
-app.use(discoRoutes);
-app.use(estoqueRoutes);
-app.use(pedidoRoutes);
-app.use(routes);
+// Servir arquivos estáticos
+app.use(express.static(join(__dirname, '../public')));
+app.set('views', join(__dirname, '../views'));
 
-app.listen(3001, () => {
-    console.log("Servidor rodando em http://localhost:3001");
-});
-
+// Rotas
+app.use('/', lojaRoutes); 
+app.use (clienteRoutes)
+app.use(discoRoutes)
+app.use(estoqueRoutes)
+app.use(pedidoRoutes)
+app.use(routes)
+app.listen(3001)
+// Exporta o handler compatível com Vercel
 export default app;
